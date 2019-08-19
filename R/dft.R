@@ -1,5 +1,26 @@
+#' Transpose data.frame object
+#'
+#' @param df data.frame or tibble object
+#'
+#' @return data.frame
+#' @export
+#'
+#' @importFrom dplyr as_tibble
+#'
+#' @examples
+#'
+#' data(iris)
+#' Transpose <- dft(iris)
+#'
+#' View(Transpose)
+#'
+#'
 dft <- function(df) {
-    if (class(df) %in% "tibble") {
+    cl<-class(df)
+    if(! "data.frame" %in% cl){warning("object must be a data.frame")
+        return(invisible())
+        }
+    if (cl %in% "tibble") {
         Tib <- TRUE
     }
     else {
@@ -14,6 +35,3 @@ dft <- function(df) {
         return(df_1)
     }
 }
-data(iris)
-Transpose <- dft(iris)
-View(Transpose)
