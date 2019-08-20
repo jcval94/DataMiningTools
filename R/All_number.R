@@ -1,6 +1,14 @@
 library(purrr)
 library(tibble)
-All_number <- function(df) {
+#' Title
+#'
+#' @param df
+#'
+#' @return
+#' @export
+#'
+#' @examples
+all_number <- function(df) {
     df <- as_tibble(df)
     classes <- purrr::map_chr(df, class)
     nnm <- !classes %in% "numeric"
