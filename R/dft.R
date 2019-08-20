@@ -2,7 +2,7 @@
 #'
 #' @param df data.frame or tibble object
 #'
-#' @return data.frame
+#' @return data.frame transposed
 #' @export
 #'
 #' @importFrom dplyr as_tibble

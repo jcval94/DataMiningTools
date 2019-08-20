@@ -1,20 +1,25 @@
-#' Title
+#' Transform all non numeric variables of a data.frame into numeric variables
 #'
-#' @param df
+#' @param df data.frame object
 #'
-#' @return
+#' @return data.frame object with new variables
 #' @export
 #'
 #' @importFrom purrr map
 #' @importFrom dplyr as_tibble
 #'
 #' @examples
-all_number <- function(df) {
+#'
+#'data(iris)
+#'Iris<-all_number(iris)
+#'Iris
+#'
+all_number <- function(df,...) {
     df <- as_tibble(df)
     classes <- purrr::map_chr(df, class)
     nnm <- !classes %in% "numeric"
     no_num <- df[, names(df)[nnm]]
-    no_mun_2 <- categorizar(no_num, ALL = F)
+    no_mun_2 <- categorizar(no_num, ALL = F,...)
     df_n <- cbind(df[, !nnm], no_mun_2)
     df_n
 }
