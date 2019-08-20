@@ -1,4 +1,15 @@
-estad <- function(b, fit = NULL, p.value = NULL, anch = 100) {
+#' Shows all relevant information of a numeric vector
+#'
+#' @param b
+#' @param fit
+#' @param p.value
+#' @param anch
+#'
+#' @return
+#' @export
+#'
+#' @examples
+estad <- function(b, anch = 100) {
     n1 <- length(b)
     b <- na.omit(b)
     if (!is.numeric(b)) {
@@ -23,5 +34,23 @@ estad <- function(b, fit = NULL, p.value = NULL, anch = 100) {
     if (length(b) == 0) {
         b <- NA
     }
-    data.frame(min = min(b, na.rm = T), q1 = quantile(b, 0.25, na.rm = TRUE), q2 = quantile(b, 0.5, na.rm = TRUE), q3 = quantile(b, 0.75, na.rm = TRUE), max = max(b, na.rm = T), mean = mean(b, na.rm = T), sd = sd(b, na.rm = T), Len_Data = length(b), Len_NA = n1 - length(b), fit = as.character(fit), p.value = as.character(p.value))
+    est1<-as.list(quantile(b, na.rm = TRUE))
+    est2<-list(mean = mean(b, na.rm = T),
+               sd = sd(b, na.rm = T),
+               len = length(b),
+               nas = n1 - length(b),
+               mode=,
+               kurtosis=,
+               skewness=,
+               bimodal_coef=,
+               interquantile.rangue=,
+               dist = as.character(fit),
+               unique.values = ,
+               rpart.cuts = ,
+               max.likelihood = ,
+               dist.p.value = as.character(p.value))
+    est3<-t.test(b)
+    est3<-list(conf.int.inf=est3$conf.int[1],conf.int.sup=est3$conf.int[2],
+               t.statistic=est3$statistic,
+               t.p.vlaue=est3$p.value)
 }

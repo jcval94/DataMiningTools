@@ -6,6 +6,7 @@
 #'
 #' @return A tibble object with new class on corresponding columns
 #' @export
+#' @importFrom purrr map_df
 #'
 #' @examples
 #'
