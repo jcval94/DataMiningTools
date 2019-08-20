@@ -1,22 +1,29 @@
-#' Transform
+#' Transform any number of categorical values into dumy variables
 #'
 #' @param df data.frame object
 #' @param vect names od df by defaultlt
-#' @param porcent
-#' @param ALL
-#' @param valor_disc
+#' @param porcent 1.5% by default, represents the minimum percentage for a category
+#' @param ALL TRUE by default, If TRUE, the function will return the original data frame merged with the dummy variables, otherwise just return the dummy variables
+#' @param disc_value maximum number of categories which a categorical value must have
 #'
 #' @return
 #' @export
 #'
 #' @examples
-categorizar <- function(df, vect = names(df), porcent = 0.015, ALL = T, valor_disc = 85) {
+#'
+#' data(cars)
+#'
+#' categorizar(cars,vect = "speed")
+#'
+categorizar <- function(df, vect = names(df), porcent = 0.015, ALL = TRUE, disc_value = 85) {
     df <- as.data.frame(df)
     nombrs_1 <- names(df)
+    if(!any(purrr::map_lgl(vect,~.x %in% nombrs_1))){warning(paste0("vect parameter not well defined"));return(invisible())}
+    if(0 %in% dim(df[,vect])){warning(paste0("data frame empty"));return(invisible())}
     for (vector in vect) {
         print(vector)
         variable <- df[, vector]
-        if (length(unique(variable)) > valor_disc) {
+        if (length(unique(variable)) > disc_value) {
             (next)()
         }
         uvp <- unique(variable)

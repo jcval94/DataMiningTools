@@ -1,11 +1,12 @@
-library(purrr)
-library(tibble)
 #' Title
 #'
 #' @param df
 #'
 #' @return
 #' @export
+#'
+#' @importFrom purrr map
+#' @importFrom dplyr as_tibble
 #'
 #' @examples
 all_number <- function(df) {
