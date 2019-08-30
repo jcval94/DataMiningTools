@@ -10,7 +10,7 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.2.0), mclust
-Imports: ADGofTest, tibble, assertthat, MASS, purrr, ggplot2, cowplot, methods, stats, dplyr
+Imports: ADGofTest, tibble, assertthat, modes, purrr, ggplot2, cowplot, methods, stats, dplyr
 RoxygenNote: 6.1.1
 URL: https://github.com/jcval94/DataMiningTools
 BugReports: https://github.com/jcval94/DataMiningTools/issues

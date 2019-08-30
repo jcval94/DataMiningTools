@@ -9,6 +9,9 @@
 #' @export
 #'
 #' @examples
+#'
+#' library(moments)
+#'
 estad <- function(b, anch = 100) {
     n1 <- length(b)
     b <- na.omit(b)
@@ -35,15 +38,16 @@ estad <- function(b, anch = 100) {
         b <- NA
     }
     est1<-as.list(quantile(b, na.rm = TRUE))
+    histo<-hist(b,breaks = 50)
     est2<-list(mean = mean(b, na.rm = T),
                sd = sd(b, na.rm = T),
                len = length(b),
                nas = n1 - length(b),
-               mode=,
-               kurtosis=,
-               skewness=,
+               mode=histo$breaks[histo$density==max(histo$density)],
+               kurtosis=moments::kurtosis(b),
+               skewness=moments::skewness(b),
                bimodal_coef=,
-               interquantile.rangue=,
+               interquantile_rangue=est1[[2]]-est1[[4]],
                dist = as.character(fit),
                unique.values = ,
                rpart.cuts = ,
