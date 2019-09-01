@@ -1,9 +1,9 @@
 #' Shows all relevant information of a numeric vector
 #'
-#' @param b
-#' @param fit
+#' @param b numeric sample
 #' @param p.value
 #' @param anch
+#' @param ... internal functions parammeter control
 #'
 #' @return
 #' @export
@@ -12,7 +12,7 @@
 #'
 #' library(moments)
 #'
-estad <- function(b, anch = 100) {
+estad <- function(b, anch = 100,...) {
     n1 <- length(b)
     b <- na.omit(b)
     if (!is.numeric(b)) {
