@@ -39,6 +39,8 @@ estad <- function(b, anch = 100) {
     }
     est1<-as.list(quantile(b, na.rm = TRUE))
     histo<-hist(b,breaks = 50)
+    Db<-density(b)
+    Un<-unique(b)
     est2<-list(mean = mean(b, na.rm = T),
                sd = sd(b, na.rm = T),
                len = length(b),
@@ -49,9 +51,10 @@ estad <- function(b, anch = 100) {
                bimodal_coef=,
                interquantile_rangue=est1[[2]]-est1[[4]],
                dist = as.character(fit),
+               Discrete = all(floor(b)==b),
                unique.values = ,
-               rpart.cuts = ,
-               max.likelihood = ,
+               kmeans.cuts = ,
+               max.likelihood = Db[["x"]][Db[["y"]]==max(Db[["y"]])],
                dist.p.value = as.character(p.value))
     est3<-t.test(b)
     est3<-list(conf.int.inf=est3$conf.int[1],conf.int.sup=est3$conf.int[2],
