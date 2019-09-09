@@ -1,4 +1,18 @@
-library(ggplot2)
+#' Title
+#'
+#' @param df
+#' @param var1
+#' @param var2
+#' @param minmax
+#' @param plot
+#' @param disc
+#' @param min.disc
+#' @param max.cont
+#'
+#' @return
+#' @export
+#'
+#' @examples
 Versus <- function(df, var1 = names(df)[1], var2 = names(df)[2], minmax = NULL, plot = TRUE, disc = TRUE, min.disc = 20, max.cont = 500) {
     NV1 <- is.numeric(var1)
     NV2 <- is.numeric(var2)

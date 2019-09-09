@@ -1,3 +1,14 @@
+#' Title
+#'
+#' @param vars
+#' @param vars_range
+#' @param fun
+#' @param puntos_valuar
+#'
+#' @return
+#' @export
+#'
+#' @examples
 Valuador <- function(vars = c("q", "shape1", "shape2"), vars_range = list(c(0, 1), c(0, 100), c(0, 100)), fun = pbeta, puntos_valuar = c(50, 50, 50)) {
     param <- formalArgs(fun)
     eq_param <- vars %in% param
