@@ -1,3 +1,12 @@
+#' Title
+#'
+#' @param df
+#' @param split
+#'
+#' @return
+#' @export
+#'
+#' @examples
 TrainTestSplit <- function(df, split = 0.75) {
     if (!any("data.frame" %in% class(df))) {
         exit("must be a data.frame object")
