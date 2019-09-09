@@ -1,3 +1,25 @@
+#' Title
+#'
+#' @param ts
+#' @param place
+#'
+#' @return
+#' @export
+#'
+#' @importFrom TSA periodogram
+#' @importFrom reshape2 dcast
+#'
+#' @examples
+#'
+#' library(timeSeries)
+#'
+#' data(LPP2005REC)
+#'
+#' df <- LPP2005REC
+#'
+#' periodicidad(df, place = 10)
+#'
+#'
 periodicidad <- function(ts, place = 10) {
     ddT <- data.frame(freq = c(), spec = c(), orden = c())
     ords <- floor(length(ts) * 0.7):length(ts)
@@ -16,7 +38,3 @@ periodicidad <- function(ts, place = 10) {
     ddT <- ddT[order(-ddT$.), ]
     return(list(unique(as.numeric(do.call("rbind", strsplit(ddT$Freq_Orden, "_"))[, 1])), ddT))
 }
-library(timeSeries)
-data(LPP2005REC)
-df <- LPP2005REC
-periodicidad(df, place = 10)
