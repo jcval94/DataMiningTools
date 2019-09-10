@@ -1,3 +1,13 @@
+#' Title
+#'
+#' @param df
+#' @param abs
+#' @param rel
+#'
+#' @return
+#' @export
+#'
+#' @examples
 reducir.df.row <- function(df, abs = 25000, rel) {
     if (rel > 1 | rel < 0) {
         return(NULL)

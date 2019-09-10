@@ -1,3 +1,12 @@
+#' Title
+#'
+#' @param df
+#' @param max_na
+#'
+#' @return
+#' @export
+#'
+#' @examples
 reducir.df.col <- function(df, max_na) {
     if (max_na > 1 | max_na < 0) {
         return(NULL)
