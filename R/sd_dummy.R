@@ -1,3 +1,13 @@
+#' Title
+#'
+#' @param X
+#' @param InfSup
+#' @param sigmas
+#'
+#' @return
+#' @export
+#'
+#' @examples
 sd_dummy<-function(X,InfSup=T,sigmas=5){
   if(InfSup){cond<-X< -s*sigmas | X> s*sigmas}else{cond<- X> s*sigmas}
   s<-sd(X)

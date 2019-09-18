@@ -1,3 +1,11 @@
+#' Title
+#'
+#' @param X
+#'
+#' @return
+#' @export
+#'
+#' @examples
 interquartile_range_dummy<-function(X){
   IR<-quantile(X)
   IR_diff<-IR[4]-IR[2]
