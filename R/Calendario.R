@@ -1,3 +1,12 @@
+#' Title
+#'
+#' @param frq
+#' @param ma_af
+#'
+#' @return
+#' @export
+#'
+#' @examples
 Calendario <- function(frq, ma_af = 4) {
     PP <- try(periodicidad(frq[[2]]), silent = T)
     if (assertthat::is.error(PP)) {
