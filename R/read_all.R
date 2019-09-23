@@ -1,9 +1,17 @@
 library(purrr)
 library(assertthat)
+#' Read all documents in a folder and subfolders assigning them to the global environment; just extensions ".txt" and ".csv" are allowed
+#'
+#' @param dir directory to read
+#'
+#' @return
+#' @export
+#'
+#' @examples
 read_all <- function(dir = getwd()) {
     lt <- list.files(dir)
-    SPL <- do.call(c, map(lt, ~strsplit(.x, ".", fixed = TRUE)))
-    len <- map_int(SPL, ~unlist(length(.x)))
+    SPL <- do.call(c, purrr::map(lt, ~strsplit(.x, ".", fixed = TRUE)))
+    len <- purrr::map_int(SPL, ~unlist(length(.x)))
     Reed <- lt[len > 1]
     Repeat <- lt[len == 1]
     if (length(Repeat) > 0) {
@@ -21,8 +29,8 @@ read_all <- function(dir = getwd()) {
                   cname <- gsub(" ", "_", tt[t])
                   ann <- dir_[t]
                   Leer <- try(read.csv(dir_[t]))
-                  if (is.error(Leer)) {
-                    Leer <- "Error de lectura"
+                  if (assertthat::is.error(Leer)) {
+                    Leer <- "Reading error"
                   }
                   return(assign(x = substr(cname, 1, nchar(cname) - 4), value = Leer, envir = globalenv()))
                 }
@@ -35,5 +43,6 @@ read_all <- function(dir = getwd()) {
             readd(csv, dir_csv)
         }
     }
+    invisible()
 }
 read_all()

@@ -1,4 +1,4 @@
-#' Title
+#' Funtion to get Outliers and splits through standar deviation
 #'
 #' @param X random sample, numeric vector
 #' @param InfSup If TRUE, outliers from the left side of the density function will be considered
