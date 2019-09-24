@@ -1,5 +1,3 @@
-library(purrr)
-library(assertthat)
 #' Read all documents in a folder and subfolders assigning them to the global environment; just extensions ".txt" and ".csv" are allowed
 #'
 #' @param dir directory to read
@@ -7,7 +5,22 @@ library(assertthat)
 #' @return
 #' @export
 #'
+#' @importFrom purrr map_int
+#' @importFrom purrr map
+#' @importFrom assertthat is.error
+#'
+#'
 #' @examples
+#'
+#'
+#' #create folder
+#'
+#' #create file
+#' lib<-getwd()
+#'
+#' read_all(lib)
+#'
+#'
 read_all <- function(dir = getwd()) {
     lt <- list.files(dir)
     SPL <- do.call(c, purrr::map(lt, ~strsplit(.x, ".", fixed = TRUE)))
