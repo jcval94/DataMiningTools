@@ -1,4 +1,4 @@
-#' Transform all non numeric variables of a data.frame into numeric variables
+#' Transform all non numeric variables of a data.frame into numeric variables by geting dummies features of each variable category
 #'
 #' @param df data.frame object
 #'

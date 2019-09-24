@@ -12,6 +12,8 @@
 #' @return
 #' @export
 #'
+#' @import ggplot2 ggplot, geom_violin, geom_boxplot, aes
+#'
 #' @examples
 Versus <- function(df, var1 = names(df)[1], var2 = names(df)[2], minmax = NULL, plot = TRUE, disc = TRUE, min.disc = 20, max.cont = 500) {
     NV1 <- is.numeric(var1)
@@ -65,7 +67,7 @@ Versus <- function(df, var1 = names(df)[1], var2 = names(df)[2], minmax = NULL, 
     if (plot) {
         names(df)[1] <- "var1"
         names(df)[2] <- "var2"
-        plot_2 <- ggplot(df, aes(var1, var2)) + geom_violin(aes(fill = var1)) + geom_boxplot(width = 0.2, alpha = 0.2, color = "red")
+        plot_2 <- ggplot2::ggplot(df, aes(var1, var2)) + geom_violin(aes(fill = var1)) + geom_boxplot(width = 0.2, alpha = 0.2, color = "red")
     }
     return(list(porcent, plot_2))
 }
