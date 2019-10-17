@@ -1,6 +1,6 @@
 #' Title
 #'
-#' @param df
+#' @param df data frame object
 #' @param var1
 #' @param var2
 #' @param minmax
@@ -15,6 +15,12 @@
 #' @import ggplot2 ggplot, geom_violin, geom_boxplot, aes
 #'
 #' @examples
+#'
+#' data(iris)
+#' VS <- Versus(df = iris, var1 = "Sepal.Length", var2 = "Species", plot = T)
+#'
+#' VS[[1]]
+#'
 Versus <- function(df, var1 = names(df)[1], var2 = names(df)[2], minmax = NULL, plot = TRUE, disc = TRUE, min.disc = 20, max.cont = 500) {
     NV1 <- is.numeric(var1)
     NV2 <- is.numeric(var2)
@@ -71,5 +77,3 @@ Versus <- function(df, var1 = names(df)[1], var2 = names(df)[2], minmax = NULL, 
     }
     return(list(porcent, plot_2))
 }
-data(iris)
-VS <- Versus(df = iris, var1 = "Species", var2 = "Sepal.Length", plot = T)
