@@ -10,9 +10,9 @@
 #'
 #' @examples
 #'
-#'data(iris)
-#'Iris<-all_number(iris)
-#'Iris
+#' data(iris)
+#' Iris<-all_number(iris)
+#' Iris
 #'
 all_number <- function(df,...) {
     df <- as_tibble(df)

@@ -1,14 +1,20 @@
-#' Title
+#' Get dummie variable from a variable or
 #'
-#' @param X
-#' @param InfSup
-#' @param a
+#' @param X vnumeric ector
+#' @param InfSup TRUE,
+#' @param a quantile
 #'
-#' @return
+#' @return a list with the superior and inferior quantile (if applies) and a dummie vector
 #' @export
 #'
 #' @examples
-quantile_dummy<-function(X,InfSup=T,a=.975){
+#'
+#' x<-rnorm(1000)
+#'
+#' quantile_dummy(x)
+#'
+#'
+quantile_dummy<-function(X,InfSup=TRUE,a=.975){
   if(InfSup){q<-c(1-a,a)}else{q<-c(0,a)}
   Q<-quantile(X,q)
   X_OL<-ifelse(X< Q[1] | X> Q[2],1,0)
