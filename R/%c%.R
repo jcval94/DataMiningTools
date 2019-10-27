@@ -1,4 +1,4 @@
-#' determines if a number is between two nombers given
+#' determines if a number is between two given nombers
 #'
 #' @param e1 numeric vector
 #' @param e2 numeric range
@@ -10,8 +10,8 @@
 #'
 #' 100 %c% c(93,124)
 #'
-#' !runif(100) %c% c(0,1)
-#'
+#' set.seed(31109)
+#' runif(100) %c% c(1/2,1)
 #'
 #'
 `%c%` <- function(e1, e2){
