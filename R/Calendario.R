@@ -1,13 +1,23 @@
 #' Title
 #'
-#' @param frq
-#' @param ma_af
+#' @param ts time series object
+#' @param ma_af Mobile Average model parammeter
 #'
 #' @return
 #' @export
 #'
 #' @examples
-Calendario <- function(frq, ma_af = 4) {
+#'
+#' dates<-Calendario(USAccDeaths)
+#'
+#'
+Calendario <- function(ts, ma_af = 4) {
+    if(!"ts" %in% class(ts)){
+        warning("ts argument must be a time series")
+        return(invisible())
+    }
+    Dates<-time(ts)
+    #Value<-as.numeric(ts)
     PP <- try(periodicidad(frq[[2]]), silent = T)
     if (assertthat::is.error(PP)) {
         PP <- 7
