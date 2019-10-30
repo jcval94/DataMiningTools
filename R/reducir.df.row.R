@@ -1,6 +1,6 @@
-#' Title
+#' Drop columns whose NA percentage be greater than max_na
 #'
-#' @param df
+#' @param df data.frame object
 #' @param abs
 #' @param rel
 #'
