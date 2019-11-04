@@ -21,6 +21,7 @@
 #'
 periodogram <- function(t, place = 10) {
     dts<-dim(t)
+    listn<-list()
     for(i in 1:(dts[2])){
         ts<-t[,i]
         ddT <- data.frame(freq = c(), spec = c(), orden = c())
@@ -40,5 +41,5 @@ periodogram <- function(t, place = 10) {
         ddT <- ddT[order(-ddT$.), ]
         listn[[i]]<-list(unique(as.numeric(do.call("rbind", strsplit(ddT$Freq_Orden, "_")))), ddT)
     }
-    return()
+    return(listn)
 }
