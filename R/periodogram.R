@@ -1,6 +1,6 @@
-#' Title
+#' Applies periodogram function for different chunks of a time series to get
 #'
-#' @param ts
+#' @param ts time series object
 #' @param place
 #'
 #' @return
@@ -29,7 +29,6 @@ periodogram <- function(ts, place = 10) {
         dds <- head(dds[order(-dds$spec), ], place)
         ddT <- rbind(ddT, dds)
     }
-
     ddT <- ddT[order(-ddT$spec), ]
     Maxi <- max(ddT$spec)
     ddT <- head(ddT[ddT$orden > 2, ], 15)
