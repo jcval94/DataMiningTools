@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-sd_dummy<-function(X,InfSup=TRUE,sigmas=5){
+dummy_sd<-function(X,InfSup=TRUE,sigmas=5){
   if(InfSup){cond<-X< -s*sigmas | X> s*sigmas}else{cond<- X> s*sigmas}
   s<-sd(X)
   X_OL<-ifelse(cond,1,0)
