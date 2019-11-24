@@ -13,12 +13,14 @@
 #'
 #' data(cars)
 #'
-#' categorizar(cars,vect = "speed")
+#' Cat<-categorizar(cars,vect = "speed")
 #'
 categorizar <- function(df, vect = names(df), porcent = 0.015, ALL = TRUE, disc_value = 85) {
-    df <- as.data.frame(df)
+    if(!"data.frame" %in% class(df)){
+        df <- as.data.frame(df)
+    }
     nombrs_1 <- names(df)
-    if(!any(purrr::map_lgl(vect,~.x %in% nombrs_1))){warning(paste0("vect parameter not well defined"));return(invisible())}
+    if(!any(sapply(vect,function(x) x %in% nombrs_1))){warning(paste0("vect parameter not well defined"));return(invisible())}
     if(0 %in% dim(df[,vect])){warning(paste0("data frame empty"));return(invisible())}
     for (vector in vect) {
         print(vector)
