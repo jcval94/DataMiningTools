@@ -18,13 +18,13 @@ Calendario <- function(ts, ma_af = 4) {
     }
     Dates<-time(ts)
     #Value<-as.numeric(ts)
-    PP <- try(periodicidad(frq[[2]]), silent = T)
-    if (assertthat::is.error(PP)) {
+    PP <- try(periodicidad(frq[[2]]), silent = TRUE)
+    if (inherits(PP, "try-error")) {
         PP <- 7
     }
     Periodo <- round(PP[[1]], 0)[1]
-    names(frq)[purrr::map_lgl(frq, is.numeric)] <- "Valor"
-    names(frq)[!purrr::map_lgl(frq, is.numeric)] <- "Fecha"
+    names(frq)[sapply(frq, is.numeric)] <- "Valor"
+    names(frq)[!sapply(frq, is.numeric)] <- "Fecha"
     frq[["Fecha.0"]] <- frq[["Fecha"]] - as.numeric(frq[["Fecha"]])%%Periodo
     frqpv <- reshape2::dcast(frq, Fecha.0 ~ ., sum, value.var = "Valor")
     frqpv[["Div_est"]] <- row.names(frqpv)

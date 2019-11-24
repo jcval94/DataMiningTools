@@ -10,26 +10,14 @@
 #' @examples
 #'
 #'
-get_dummy<-function(X,method,...){
-  interquartile_range_dummy<-function(X){
-    IR<-quantile(X)
-    IR_diff<-IR[4]-IR[2]
-    Inter_Q<-c(IR[2]-IR_diff,IR[4]+IR_diff)
-    X_OL<-ifelse(X< Inter_Q[1] | X> Inter_Q[2],1,0)
-    list(Inter_Q,X_OL)
+get_dummy<-function(X,method=c("all","ir","sd","quantile"),...){
+  if("all" %in% method){
+    method<-c("ir","sd","quantile")
   }
+  fun_dum<-lapply(method,function(x){
+    get(paste0("dummy_",x))
+  })
 
-  sd_dummy<-function(X,InfSup=TRUE,sigmas=5){
-    if(InfSup){cond<-X< -s*sigmas | X> s*sigmas}else{cond<- X> s*sigmas}
-    s<-sd(X)
-    X_OL<-ifelse(cond,1,0)
-    list(s,X_OL)
-  }
+  nested(X,fun_dum)
 
-  quantile_dummy<-function(X,InfSup=T,a=.975){
-    if(InfSup){q<-c(1-a,a)}else{q<-c(0,a)}
-    Q<-quantile(X,q)
-    X_OL<-ifelse(X< Q[1] | X> Q[2],1,0)
-    list(Q,X_OL)
-  }
 }

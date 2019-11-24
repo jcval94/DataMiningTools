@@ -6,7 +6,7 @@
 #' @return New data.frame with merged cells
 #' @export
 #'
-#' @importFrom purrr map
+#'
 #' @importFrom tibble as_tibble
 #'
 #' @examples
@@ -20,7 +20,7 @@
 #' dim(df3)
 #'
 CBIND <- function(df1, df2,...) {
-    is_df <- purrr::map_lgl(list(df1, df2), is.data.frame)
+    is_df <- sapply(list(df1, df2), is.data.frame)
     if (any(is_df)) {
         df1 <- tibble::as_tibble(df1)
         df2 <- tibble::as_tibble(df2)
