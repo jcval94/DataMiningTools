@@ -26,5 +26,5 @@ class_as_class <- function(df, cl_from, cl_to) {
         }
         X
     }
-    purrr::map_df(df, ~f_a_s(.x))
+    as.data.frame(lapply(df, f_a_s))
 }
