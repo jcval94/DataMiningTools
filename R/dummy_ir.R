@@ -7,6 +7,13 @@
 #'
 #' @examples
 #'
+#' set.seed(31109)
+#' x<-rnorm(1000)
+#'
+#' #Numeric vector
+#' dummy_ir(x)
+#'
+#' #Data frame
 #' dummy_ir(iris)
 #'
 dummy_ir<-function(X){

@@ -9,19 +9,26 @@
 #'
 #' @examples
 #'
-#' dummy_sd(iris)
+#' set.seed(31109)
+#' x<-rnorm(1000)
 #'
-#' dummy_sd(rnorm(10000))
+#' #Numeric vector
+#' dummy_sd(x)
+#'
+#' #Data frame
+#' dummy_sd(iris)
 #'
 dummy_sd<-function(X,InfSup=TRUE,sigmas=3){
   if("data.frame" %in% class(X)){
     Cols<-(lapply(X,dummy_sd))
+    cuts<-list()
     for(cl in 1:length(Cols)){
       clm<-Cols[[cl]][[2]]
+      cuts[[cl]]<-Cols[[cl]][[1]]
       if(!is.numeric(clm)){next()}
-      X[[paste0(names(Cols)[cl],"_sd")]]<-clm
+      X[[paste0(names(Cols)[cl],"_ir")]]<-clm
     }
-    return(X)
+    return(list(X,cuts))
   }else{
     if(is.numeric(X)){
       s<-sd(X)
