@@ -15,8 +15,22 @@
 #'
 #'
 dummy_quantile<-function(X,InfSup=TRUE,a=.975){
-  if(InfSup){q<-c(1-a,a)}else{q<-c(0,a)}
-  Q<-quantile(X,q)
-  X_OL<-ifelse(X< Q[1] | X> Q[2],1,0)
-  list(Q,X_OL)
+  if("data.frame" %in% class(X)){
+    Cols<-(lapply(X,dummy_sd))
+    for(cl in 1:length(Cols)){
+      clm<-Cols[[cl]][[2]]
+      if(!is.numeric(clm)){next()}
+      X[[paste0(names(Cols)[cl],"_sd")]]<-clm
+    }
+    return(X)
+  }else{
+    if(is.numeric(X)){
+      if(InfSup){q<-c(1-a,a)}else{q<-c(0,a)}
+      Q<-quantile(X,q)
+      X_OL<-ifelse(X< Q[1] | X> Q[2],1,0)
+      list(Q,X_OL)
+    }else{
+      return(list(NA,X))
+    }
+  }
 }
