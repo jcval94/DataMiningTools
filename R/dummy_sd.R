@@ -8,9 +8,28 @@
 #' @export
 #'
 #' @examples
-dummy_sd<-function(X,InfSup=TRUE,sigmas=5){
-  if(InfSup){cond<-X< -s*sigmas | X> s*sigmas}else{cond<- X> s*sigmas}
-  s<-sd(X)
-  X_OL<-ifelse(cond,1,0)
-  list(s,X_OL)
+#'
+#' dummy_sd(iris)
+#'
+#' dummy_sd(rnorm(10000))
+#'
+dummy_sd<-function(X,InfSup=TRUE,sigmas=3){
+  if("data.frame" %in% class(X)){
+    Cols<-(lapply(X,dummy_sd))
+    for(cl in 1:length(Cols)){
+      clm<-Cols[[cl]][[2]]
+      if(!is.numeric(clm)){next()}
+      X[[paste0(names(Cols)[cl],"_sd")]]<-clm
+    }
+    return(X)
+  }else{
+    if(is.numeric(X)){
+      s<-sd(X)
+      if(InfSup){cond<-X< -s*sigmas | X> s*sigmas}else{cond<- X> s*sigmas}
+      X_OL<-ifelse(cond,1,0)
+      list(s,X_OL)
+    }else{
+      return(list(NA,X))
+    }
+  }
 }
