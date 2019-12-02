@@ -7,6 +7,7 @@
 #' @export
 #'
 #' @examples
+#'
 #' #Is the sum of X greater than 3
 #' lst<-list(sum,function(x) x > 3)
 #' X<-c(4,2,3,2,6)

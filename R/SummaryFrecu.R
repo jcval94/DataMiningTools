@@ -1,3 +1,19 @@
+#' Title
+#'
+#' @param data
+#' @param Vars_clasif
+#' @param Var_medida
+#' @param anch
+#' @param reg_min
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#'
+#'
+#'
+#'
 SummaryFrecu <- function(data, Vars_clasif, Var_medida, anch = 1000, reg_min = 1) {
     if (!class(data) %in% "data.frame") {
         stop(paste("data debe ser data frame"))

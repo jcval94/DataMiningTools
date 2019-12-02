@@ -1,4 +1,4 @@
-#' Drop columns whose NA percentage be greater than max_na
+#' Selects random rows from a table
 #'
 #' @param df data.frame object
 #' @param abs
@@ -9,15 +9,15 @@
 #'
 #' @examples
 #'
-#' iris2<-reducir.df.row(iris,rel=.5)
+#' iris2<-sample.df(iris,rel=.5)
 #'
 #' iris2
 #'
-#' iris3<-reducir.df.row(iris,20)
+#' iris3<-sample.df(iris,20)
 #'
 #' iris3
 #'
-reducir.df.row <- function(df, abs = 25000, rel) {
+sample.df <- function(df, abs = 25000, rel) {
   if (nrow(df) > abs & missing(rel)) {
     return(df[sample(seq_len(nrow(df)), size = abs), ])
   }

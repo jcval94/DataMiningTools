@@ -1,4 +1,15 @@
-require(purrr)
+#' Title
+#'
+#' @param dir
+#' @param file
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#'
+#' No_comments(file = "No_comments.R")
+#'
 No_comments <- function(dir = getwd(), file) {
     if (missing(file)) {
         file <- list.files(dir)
@@ -8,4 +19,3 @@ No_comments <- function(dir = getwd(), file) {
     purrr::map(file, ~writeLines(as.character(parse(.x)), paste0("New/", .x)))
     return(invisible())
 }
-No_comments(file = "No_comments.R")
