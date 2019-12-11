@@ -1,4 +1,4 @@
-#' determines if a number is between two given nombers
+#' Determines if a number is between two given nombers
 #'
 #' @param e1 numeric vector
 #' @param e2 numeric range

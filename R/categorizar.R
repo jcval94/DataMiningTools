@@ -1,4 +1,4 @@
-#' Transform any number of categorical values into dumy variables
+#' Transform any number of categorical values into dummy variables
 #'
 #' @param df data.frame object
 #' @param vect names od df by defaultlt
