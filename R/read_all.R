@@ -58,4 +58,3 @@ read_all <- function(dir = getwd()) {
     }
     invisible()
 }
-read_all()
