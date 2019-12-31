@@ -1,3 +1,14 @@
+#' Title
+#'
+#' @param df
+#' @param Var_clasif
+#' @param Var_date
+#' @param Var_medida
+#'
+#' @return
+#' @export
+#'
+#' @examples
 Indicadores_max <- function(df, Var_clasif, Var_date, Var_medida) {
     if (missing(Var_date)) {
         Var_date <- names(df)[purrr::map_lgl(df, ~class(.x) == "Date")][1]
@@ -38,7 +49,7 @@ Indicadores_max <- function(df, Var_clasif, Var_date, Var_medida) {
     Score_Max <- dft(Semana_server_out_cont[nrow(Semana_server_out_cont), ]/(nrow(Semana_server_out_cont) - 1))
     Cortes_8 <- table(cut(Score_Max[[1]], 8))
     Porcent_aumento <- sum(Cortes_8/sum(Cortes_8) * (0:7))
-    ifelse(Porcent_aumento < (0.85), Alerta <- list("A2N", "yellow", "exclamation-circle"), ifelse(Porcent_aumento < (1), Alerta <- list("A1N", "yellow", "check-circle"), ifelse(Porcent_aumento < 1.15, Alerta <- list("A0", "green", "check-circle"), ifelse(Porcent_aumento < 1.3, Alerta <- list("A1", "light-blue", "check-circle"), ifelse(Porcent_aumento < 1.45, Alerta <- list("A2", "yellow", "exclamation-circle"), ifelse(Porcent_aumento < 1.6, Alerta <- list("A3", "red", "times-circle"), ifelse(Porcent_aumento < 
+    ifelse(Porcent_aumento < (0.85), Alerta <- list("A2N", "yellow", "exclamation-circle"), ifelse(Porcent_aumento < (1), Alerta <- list("A1N", "yellow", "check-circle"), ifelse(Porcent_aumento < 1.15, Alerta <- list("A0", "green", "check-circle"), ifelse(Porcent_aumento < 1.3, Alerta <- list("A1", "light-blue", "check-circle"), ifelse(Porcent_aumento < 1.45, Alerta <- list("A2", "yellow", "exclamation-circle"), ifelse(Porcent_aumento < 1.6, Alerta <- list("A3", "red", "times-circle"), ifelse(Porcent_aumento <
         1.75, Alerta <- list("A4", "black", "times-circle"), Alerta <- list("A3N", "red", "times-circle"))))))))
     Alerta[[4]] <- round(Porcent_aumento, 3)
     Alerta
